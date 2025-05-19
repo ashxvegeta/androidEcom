@@ -22,17 +22,22 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     Context context;
     ArrayList<Category> categories;
 
+     // 1
     public  CategoryAdapter(Context context,ArrayList<Category> categories){
        this.context = context;
        this.categories = categories;
     }
 
+
+     //3
     @NonNull
     @Override
     public CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new CategoryViewHolder(LayoutInflater.from(context).inflate(R.layout.item_categories,parent,false));
     }
 
+
+    //4
     @Override
     public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
       Category category = categories.get(position);
@@ -44,11 +49,13 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         holder.binding.image.setBackgroundColor(Color.parseColor(category.getColor()));
     }
 
+    //    2
     @Override
     public int getItemCount() {
         return categories.size();
     }
 
+    //3.2
     public class CategoryViewHolder extends RecyclerView.ViewHolder{
 
         ItemCategoriesBinding binding;
