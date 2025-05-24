@@ -65,6 +65,11 @@ public class MainActivity extends AppCompatActivity {
         products.add(new Product("Hoodie", "https://www.mytheresa.com/media/1094/1238/100/53/P00792442.jpg", "1", 12, 12, 1, 1));
         products.add(new Product("Tank Top", "https://image.hm.com/assets/hm/1d/c0/1dc0aa70c9ab49915f0820a4568d21720345f603.jpg?imwidth=1260", "1", 12, 12, 1, 1));
         products.add(new Product("Sweatshirt", "https://www.mytheresa.com/media/1094/1238/100/4a/P01015715.jpg", "1", 12, 12, 1, 1));
+        products.add(new Product("Shirt", "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRdY5Yjjgc1WwogercoUYAi94C5U_5PpExQwI_q6BbGzQ7VjdIBPCynvbSj5Y8yvKyvCg6wTTdkC4_XwV4ANvY5VRPMMvukLveIJHrvr0kZAG5qnbE77HCqcQ", "1", 12, 12, 1, 1));
+        products.add(new Product("Polo Shirt", "https://media.darveys.com/catalog/product/c/l/clot_080425_99987_1.jpg", "1", 12, 12, 1, 1));
+        products.add(new Product("Hoodie", "https://www.mytheresa.com/media/1094/1238/100/53/P00792442.jpg", "1", 12, 12, 1, 1));
+        products.add(new Product("Tank Top", "https://image.hm.com/assets/hm/1d/c0/1dc0aa70c9ab49915f0820a4568d21720345f603.jpg?imwidth=1260", "1", 12, 12, 1, 1));
+        products.add(new Product("Sweatshirt", "https://www.mytheresa.com/media/1094/1238/100/4a/P01015715.jpg", "1", 12, 12, 1, 1));
             productAdapter = new ProductAdapter(this,products);
             GridLayoutManager layoutManager = new GridLayoutManager(this,2);
             binding.productlist.setLayoutManager(layoutManager);
