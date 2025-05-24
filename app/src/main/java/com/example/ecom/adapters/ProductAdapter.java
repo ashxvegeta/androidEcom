@@ -43,7 +43,7 @@ public class ProductAdapter extends  RecyclerView.Adapter<ProductAdapter.Product
 //       set the image
         holder.binding.label.setText(product.getName());
 //       set the price
-        holder.binding.price.setText("INR"+product.getPrice());
+        holder.binding.price.setText("INR "+product.getPrice());
     }
 
     @Override
