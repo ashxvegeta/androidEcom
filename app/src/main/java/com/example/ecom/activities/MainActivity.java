@@ -18,6 +18,8 @@ import com.example.ecom.databinding.ActivityMainBinding;
 import com.example.ecom.models.Category;
 import com.example.ecom.models.Product;
 
+import org.imaginativeworld.whynotimagecarousel.model.CarouselItem;
+
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -38,6 +40,13 @@ public class MainActivity extends AppCompatActivity {
 
         initCategories();
         initProducts();
+        initSlider();
+
+    }
+
+    private void initSlider() {
+     binding.carousel.addData(new CarouselItem("https://cdn.prod.website-files.com/605826c62e8de87de744596e/62b5a9572dab880f81c5d178_ajVzMkY7zNN-cU8hLJlTXR93WXkC09AI_0Dm-VBCfWe-kbHdRAAATBpSlNajuRsW7e0jHYCOVjdcHY1Sf-3X4tAI22KAFbbu31rgYGEmgCSV_WUrLFWhWl09ddXm7EhIITjKG0OggdxALfJeGQ.jpeg","headphones"));
+     binding.carousel.addData(new CarouselItem("https://mobirise.com/extensions/commercem4/assets/images/1.jpg","Shoes"));
 
     }
 

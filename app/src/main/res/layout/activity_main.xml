@@ -22,6 +22,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:mt_hint="Search products..."
         app:mt_maxSuggestionsCount="10"
+        app:mt_navIconEnabled="true"
         app:mt_speechMode="true" />
 
     <!-- Scrollable Content -->
@@ -42,11 +43,26 @@
             android:orientation="vertical"
             android:padding="8dp">
 
+
             <!-- Categories CardView -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp">
+
+                <org.imaginativeworld.whynotimagecarousel.ImageCarousel
+                    android:id="@+id/carousel"
+                    android:layout_width="match_parent"
+                    app:autoPlay="true"
+                    app:showNavigationButtons="false"
+                    android:layout_height="150dp" />
+            </androidx.cardview.widget.CardView>
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="16dp"
                 app:cardCornerRadius="10dp">
 
