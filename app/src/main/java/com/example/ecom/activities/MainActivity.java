@@ -11,17 +11,32 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 
+import com.android.volley.Request;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+
 import com.example.ecom.R;
 import com.example.ecom.adapters.CategoryAdapter;
 import com.example.ecom.adapters.ProductAdapter;
 import com.example.ecom.databinding.ActivityMainBinding;
 import com.example.ecom.models.Category;
 import com.example.ecom.models.Product;
+import com.example.ecom.utilities.Constants;
 
 import org.imaginativeworld.whynotimagecarousel.model.CarouselItem;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Locale;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
+import android.util.Log;
+
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -52,17 +67,56 @@ public class MainActivity extends AppCompatActivity {
 
     void initCategories(){
         categories = new ArrayList<>();
-        categories.add(new Category("Electronics", "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9", "#FF5733", "Gadgets and devices", 1));
-        categories.add(new Category("Clothing", "https://images.unsplash.com/photo-1521334884684-d80222895322", "#33C1FF", "Men & Women Fashion", 2));
-        categories.add(new Category("Books", "https://images.unsplash.com/photo-1512820790803-83ca734da794", "#FFC300", "Fiction, education and more", 3));
-        categories.add(new Category("Home & Kitchen", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=80", "#8D33FF", "Furniture, Decor", 4));
-        categories.add(new Category("Toys", "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9", "#FF33A6", "Toys for kids", 5));
-        categories.add(new Category("Beauty & Care", "https://images.unsplash.com/photo-1521334884684-d80222895322", "#33FFB5", "Beauty & Skincare", 6));
 
         categoryAdapter = new CategoryAdapter(this, categories);
+        getCategories();
         GridLayoutManager layoutManager = new GridLayoutManager(this,4);
         binding.CategoriesList.setLayoutManager(layoutManager);
         binding.CategoriesList.setAdapter(categoryAdapter);
+    }
+
+    void getCategories() {
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url = Constants.GET_CATEGORIES_URL; // Make sure this is defined
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        try {
+                            JSONObject mainobject =  new JSONObject(response);
+                            if(mainobject.getString("status").equals("success")){
+                                JSONArray categoriesArray = mainobject.getJSONArray("categories");
+                                for (int i =0; i<categoriesArray.length();i++){
+                                     JSONObject object = categoriesArray.getJSONObject(i);
+                                     Category category = new Category(
+                                         object.getString("name"),
+                                        object.getString("icon"),
+                                        object.getString("color"),
+                                        object.getString("brief"),
+                                        object.getInt("id")
+
+                                     );
+                                     categories.add(category);
+                                }
+                                categoryAdapter.notifyDataSetChanged();
+                            }else{
+
+                            }
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
+//                        Log.e("API_RESPONSE", response);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+        // Add the request to the RequestQueue
+        queue.add(stringRequest);
     }
 
     void initProducts(){

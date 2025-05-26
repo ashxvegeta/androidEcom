@@ -60,4 +60,9 @@ dependencies {
 
     // Optional: Image Carousel
     implementation("org.imaginativeworld.whynotimagecarousel:whynotimagecarousel:2.1.0")
+
+    //for api
+    implementation("com.android.volley:volley:1.2.1")
+
+
 }
