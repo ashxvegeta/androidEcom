@@ -5,6 +5,8 @@ public class Constants {
     public static final String API_BASE_URL = "https://testlearningget.shop/api";
     // Endpoint for fetching categories
     public static final String GET_CATEGORIES_URL = API_BASE_URL + "/categories";
+
+    public static final String GET_PRODUCTS_URL = API_BASE_URL + "/recenetproducts";
 //
 //    public static String GET_PRODUCTS_URL = API_BASE_URL + "/services/listProduct";
 //    public static String GET_OFFERS_URL = API_BASE_URL + "/services/listFeaturedNews";
