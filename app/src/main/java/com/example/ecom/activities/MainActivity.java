@@ -60,10 +60,49 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initSlider() {
-     binding.carousel.addData(new CarouselItem("https://cdn.prod.website-files.com/605826c62e8de87de744596e/62b5a9572dab880f81c5d178_ajVzMkY7zNN-cU8hLJlTXR93WXkC09AI_0Dm-VBCfWe-kbHdRAAATBpSlNajuRsW7e0jHYCOVjdcHY1Sf-3X4tAI22KAFbbu31rgYGEmgCSV_WUrLFWhWl09ddXm7EhIITjKG0OggdxALfJeGQ.jpeg","headphones"));
-     binding.carousel.addData(new CarouselItem("https://mobirise.com/extensions/commercem4/assets/images/1.jpg","Shoes"));
+        getBanner();
 
     }
+
+    private void getBanner() {
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url = Constants.GET_BANNERS_URL;
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject object = new JSONObject(response);
+                            if (object.getString("status").equals("success")) {
+                                JSONArray offerArray = object.getJSONArray("news_info");
+                                for (int i = 0; i < offerArray.length(); i++) {
+                                    JSONObject childobject = offerArray.getJSONObject(i);
+                                    binding.carousel.addData(
+                                            new CarouselItem(
+                                                    childobject.getString("image"),
+                                                    childobject.getString("text")
+                                            )
+                                    );
+                                }
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                    }
+                }
+        );
+
+        // Add the request to the RequestQueue
+        queue.add(stringRequest);
+    }
+
 
     void initCategories(){
         categories = new ArrayList<>();
