@@ -9,18 +9,16 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.ecom.R;
+import com.example.ecom.databinding.ActivityProductDetailBinding;
 
 public class ProductDetailActivity extends AppCompatActivity {
+
+    ActivityProductDetailBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_product_detail);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.categoriesList), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        binding = ActivityProductDetailBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
     }
 }
