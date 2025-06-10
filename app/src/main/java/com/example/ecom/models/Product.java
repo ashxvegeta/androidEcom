@@ -5,9 +5,11 @@ public class Product {
     private String name,image,status;
     private double price, discount;
     private int stock,id;
+    String description;
 
 
-    public Product( String name,String image, String status, double price, double discount, int stock, int id) {
+
+    public Product( String name,String image, String status, double price, double discount, int stock, int id,String description) {
         this.image = image;
         this.name = name;
         this.status = status;
@@ -15,6 +17,8 @@ public class Product {
         this.discount = discount;
         this.stock = stock;
         this.id = id;
+        this.description = description;
+
     }
 
     public String getName() {
@@ -72,4 +76,13 @@ public class Product {
     public void setImage(String image) {
         this.image = image;
     }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
 }

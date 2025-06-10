@@ -2,6 +2,7 @@ package com.example.ecom.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,6 +58,9 @@ public class ProductAdapter extends  RecyclerView.Adapter<ProductAdapter.Product
                 intent.putExtra("image", product.getImage());
                 intent.putExtra("id", product.getId());
                 intent.putExtra("price", product.getPrice());
+                intent.putExtra("description", product.getDescription());
+                Log.d("ProductAdapter", "Sent description: " + product.getDescription());
+
                 context.startActivity(intent);
 
 

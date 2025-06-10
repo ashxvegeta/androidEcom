@@ -192,7 +192,9 @@ public class MainActivity extends AppCompatActivity {
                                             childobject.getDouble("price"),
                                             childobject.getDouble("pricediscount"),
                                             childobject.getInt("stock"),
-                                            childobject.getInt("id")
+                                            childobject.getInt("id"),
+                                            childobject.getString("description")
+
                                     );
                                     products.add(product);
                                  }
