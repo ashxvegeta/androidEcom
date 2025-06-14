@@ -4,6 +4,7 @@
     android:id="@+id/categoriesList"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".ProductDetailActivity">
 
     <com.mancj.materialsearchbar.MaterialSearchBar
@@ -75,13 +76,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+
     <Button
         android:id="@+id/addToCartbtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="ADD TO CART"
         android:layout_margin="8dp"
+        android:text="ADD TO CART"
+        app:layout_constraintBottom_toTopOf="@+id/buynow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buynow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="BUY NOW"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

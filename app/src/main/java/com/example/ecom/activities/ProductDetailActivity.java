@@ -1,7 +1,9 @@
 package com.example.ecom.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,5 +36,14 @@ public class ProductDetailActivity extends AppCompatActivity {
         binding.productPrice.setText("INR " + price);
         binding.productDescription.setText(description);
         Glide.with(this).load(image).into(binding.productImage);
+
+        binding.addToCartbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProductDetailActivity.this, CartActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }
