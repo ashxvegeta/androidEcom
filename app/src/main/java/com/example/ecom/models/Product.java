@@ -53,7 +53,7 @@ public class Product {
         this.discount = discount;
     }
 
-    public double  getPrice() {
+    public CharSequence getPrice() {
         return price;
     }
 
