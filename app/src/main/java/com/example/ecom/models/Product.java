@@ -54,7 +54,8 @@ public class Product {
     }
 
     public CharSequence getPrice() {
-        return price;
+//        return price;
+        return String.valueOf(price);
     }
 
     public void setPrice(double price) {
